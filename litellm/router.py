@@ -368,6 +368,7 @@ class Router:
                     **kwargs,
                 }
             )
+            response.api_key = potential_model_client.api_key
             self.success_calls[model_name] += 1
             verbose_router_logger.info(
                 f"litellm.acompletion(model={model_name})\033[32m 200 OK\033[0m"
