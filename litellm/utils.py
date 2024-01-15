@@ -474,6 +474,9 @@ class EmbeddingResponse(OpenAIObject):
     model: Optional[str] = None
     """The model used for embedding."""
 
+    api_key: Optional[str] = None
+    """The used API Key for embedding."""
+
     data: Optional[List] = None
     """The actual embedding value"""
 
@@ -486,7 +489,7 @@ class EmbeddingResponse(OpenAIObject):
     _hidden_params: dict = {}
 
     def __init__(
-        self, model=None, usage=None, stream=False, response_ms=None, data=None
+        self, model=None, api_key=None, usage=None, stream=False, response_ms=None, data=None
     ):
         object = "list"
         if response_ms:
@@ -504,7 +507,7 @@ class EmbeddingResponse(OpenAIObject):
             usage = Usage()
 
         model = model
-        super().__init__(model=model, object=object, data=data, usage=usage)
+        super().__init__(model=model, api_key=api_key, object=object, data=data, usage=usage)
 
     def __contains__(self, key):
         # Define custom behavior for the 'in' operator
